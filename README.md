@@ -1,12 +1,11 @@
-# related-digital-project
+# related-digital-challenge
 
-Project Definitions;
+## Project Definitions;
 
 Implemented Crud operations on mock api.
-
-Fetching todo list
-Merging two api into one list these are todo and user apis.
-Edit - Delete capability for todos.
+- Fetching todo list
+- Merging two api into one list these are todo and user apis.
+- Edit/Delete capability for todos.
 
 ## Project setup
 
