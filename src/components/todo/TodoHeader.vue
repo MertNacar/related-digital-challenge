@@ -1,10 +1,10 @@
 <template>
-  <div class="d-flex justify-content-center align-items-center w-100">
-    <div class="flex-grow-1">#</div>
-    <div class="flex-grow-4">Title</div>
-    <div class="flex-grow-2">Assignee</div>
-    <div class="flex-grow-2">Status</div>
-    <div class="flex-grow-2">Actions</div>
+  <div class="d-flex justify-content-center align-items-center">
+    <div class="w-10">#</div>
+    <div class="w-30">Title</div>
+    <div class="w-20">Assignee</div>
+    <div class="w-20">Status</div>
+    <div class="w-20">Actions</div>
   </div>
 </template>
 

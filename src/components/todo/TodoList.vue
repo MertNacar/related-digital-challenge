@@ -1,16 +1,20 @@
 <template>
   <div class="p-6">
-    <TodoHeader />
+    <TodoHeader class="mt-6" />
     <Divider class="my-4" />
-    <div v-for="todo in todos" :key="todo.id" class="mb-5">
-      <TodoItem
-        :todo="getMergedTodoAndUser({ todo })"
-        class="mb-4"
-        :on-edit-todo="handleOpenModal"
-        :on-delete-todo="handleDeleteTodo"
-      />
+
+    <TodoItem
+      v-for="todo in todos"
+      :key="todo.id"
+      :todo="getMergedTodoAndUser({ todo })"
+      class="mb-4"
+      :on-edit-todo="handleOpenModal"
+      :on-delete-todo="handleDeleteTodo"
+    />
+
+    <div class="d-flex justify-content-center mt-6">
+      <PaginationBar />
     </div>
-    <PaginationBar />
 
     <ActionModal
       :isOpened="isModalOpened"
