@@ -1,9 +1,9 @@
 <template>
   <transition name="modal">
-    <div v-if="form && isOpened" class="modal-mask d-flex align-items-center">
+    <div v-if="form && isOpened" class="modal-base d-flex align-items-center">
       <div class="modal-container">
         <div class="modal-header">
-          <div name="header">Edit Todo #{{ form.id }}</div>
+          <h3>Edit Todo #{{ form.id }}</h3>
         </div>
 
         <div class="modal-body">
@@ -80,7 +80,7 @@ export default {
 </script>
 
 <style scoped>
-.modal-mask {
+.modal-base {
   position: fixed;
   z-index: 9998;
   top: 0;
@@ -94,17 +94,16 @@ export default {
 .modal-container {
   width: 300px;
   margin: 0px auto;
-  padding: 20px 30px;
+  padding: 15px 25px;
   background-color: #fff;
-  border-radius: 2px;
+  border-radius: 10px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
   transition: all 0.3s ease;
-  font-family: Helvetica, Arial, sans-serif;
 }
 
 .modal-header h3 {
-  margin-top: 0;
-  color: #42b983;
+  margin-top: 5px;
+  color: #293e9c;
 }
 
 .modal-body {
@@ -121,7 +120,7 @@ export default {
 
 .modal-enter .modal-container,
 .modal-leave-active .modal-container {
-  -webkit-transform: scale(1.1);
-  transform: scale(1.1);
+  -webkit-transform: scale(1.2);
+  transform: scale(1.2);
 }
 </style>
