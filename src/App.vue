@@ -26,6 +26,12 @@ export default {
 .mb-4 {
   margin-bottom: 1rem;
 }
+.mr-2 {
+  margin-right: 0.5rem;
+}
+.mb-2 {
+  margin-bottom: 0.5rem;
+}
 
 // widths
 .w-100 {
@@ -72,6 +78,11 @@ export default {
   -webkit-flex-grow: 4;
   -ms-flex-positive: 4;
   flex-grow: 4;
+}
+
+.justify-content-end {
+  -ms-flex-pack: end !important;
+  justify-content: flex-end !important;
 }
 
 .align-items-center {

@@ -12,21 +12,27 @@ const actions = {
 
     commit("setItems", data);
   },
-  async update({ dispatch }, id, params) {
-    await apiClient.todos.update(id, params);
-
-    dispatch("get");
+  async update({ commit }, payload) {
+    await apiClient.todos.update(payload.id, payload);
+    commit("updateItems", payload);
   },
-  async delete({ dispatch }, id) {
+  async delete({ commit }, id) {
     await apiClient.todos.delete(id);
-
-    dispatch("get");
+    commit("deleteItem", id);
   },
 };
 
 const mutations = {
   setItems(state, data) {
     state.items = [...data];
+  },
+  updateItems(state, payload) {
+    state.items = state.items.map((item) =>
+      item.id === payload.id ? { ...item, ...payload } : item
+    );
+  },
+  deleteItem(state, id) {
+    state.items = state.items.filter((item) => item.id !== id);
   },
 };
 
