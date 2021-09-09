@@ -3,7 +3,7 @@
 Implemented Crud operations on mock api.
 - Fetching todo list
 - Merging two api into one list these are todo and user apis.
-- Edit/Delete capability for todos.
+- Edit/Delete and sorting capability for todos.
 - Used axios for API operations.
 - Used vuex for store implemantation
 
