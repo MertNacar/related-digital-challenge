@@ -60,6 +60,11 @@ const mutations = {
   deleteItem(state, id) {
     state.items = state.items.filter((item) => item.id !== id);
   },
+  sortItems(state, asc) {
+    state.items = state.items.sort((a, b) =>
+      asc ? a.completed - b.completed : b.completed - a.completed
+    );
+  },
   setPageConfigs(state, { pages, pageCounts }) {
     state.pageConfigs = {
       ...state.pageConfigs,

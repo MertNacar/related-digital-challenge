@@ -1,20 +1,10 @@
 <template>
   <button
     :disabled="disabled"
-    :class="`
-      btn btn-${variant} 
-      ${isActive ? 'btn-active' : ''} 
-      ${isIconBtn ? 'btn-icon' : ''}
-    `"
+    :class="`btn btn-${variant} ${isActive ? 'btn-active' : ''}`"
     @click="onAction"
   >
-    <img
-      v-if="isIconBtn"
-      :src="`/assets/icons/${icon}`"
-      width="11px"
-      height="11px"
-    />
-    <span v-else>{{ title }}</span>
+    {{ title }}
   </button>
 </template>
 
@@ -27,20 +17,10 @@ export default {
       required: false,
       default: () => "Create",
     },
-    icon: {
-      type: String,
-      required: false,
-      default: () => "caret-down-solid.svg",
-    },
     variant: {
       type: String,
       required: false,
       default: () => "primary",
-    },
-    isIconBtn: {
-      type: Boolean,
-      required: false,
-      default: () => false,
     },
     isActive: {
       type: Boolean,
@@ -91,11 +71,5 @@ export default {
 .btn-active {
   opacity: 0.7;
   color: #000000;
-}
-.btn-icon {
-  padding: unset;
-  margin: unset;
-  width: 16px;
-  height: 16px;
 }
 </style>
