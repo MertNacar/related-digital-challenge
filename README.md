@@ -9,10 +9,8 @@ Implemented Crud operations on mock api.
 
 ## Project setup
 
-create .env file according to .env.example
-
 ```
-npm i
+npm install
 ```
 
 ### Compiles and hot-reloads for development
