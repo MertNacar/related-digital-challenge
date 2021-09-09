@@ -1,7 +1,8 @@
 <template>
   <div class="p-6">
-    <TodoHeader class="mb-5" />
-    <div v-for="todo in todos" :key="todo.id">
+    <TodoHeader />
+    <Divider class="my-4" />
+    <div v-for="todo in todos" :key="todo.id" class="mb-5">
       <TodoItem
         :todo="getMergedTodoAndUser({ todo })"
         class="mb-4"
@@ -9,6 +10,8 @@
         :on-delete-todo="handleDeleteTodo"
       />
     </div>
+    <PaginationBar />
+
     <ActionModal
       :isOpened="isModalOpened"
       :todo="selectedTodo"
@@ -19,14 +22,16 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapGetters, mapState } from "vuex";
+import Divider from "@/components/general/Divider";
 import TodoHeader from "@/components/todo/TodoHeader";
 import TodoItem from "@/components/todo/TodoItem";
+import PaginationBar from "@/components/pagination/PaginationBar";
 import ActionModal from "@/components/action/ActionModal";
 
 export default {
   name: "TodoList",
-  components: { TodoHeader, TodoItem, ActionModal },
+  components: { Divider, TodoHeader, TodoItem, PaginationBar, ActionModal },
   data() {
     return {
       isModalOpened: false,
@@ -35,8 +40,10 @@ export default {
   },
   computed: {
     ...mapState({
-      todos: (state) => state.todos.items,
       users: (state) => state.users.items,
+    }),
+    ...mapGetters({
+      todos: "todos/currentItems",
     }),
   },
   mounted() {

@@ -1,5 +1,11 @@
 <template>
-  <button :class="`btn btn-${variant}`" @click="onAction">{{ title }}</button>
+  <button
+    :disabled="disabled"
+    :class="`btn btn-${variant} ${isActive ? 'btn-active' : ''}`"
+    @click="onAction"
+  >
+    {{ title }}
+  </button>
 </template>
 
 <script>
@@ -15,6 +21,16 @@ export default {
       type: String,
       required: false,
       default: () => "primary",
+    },
+    isActive: {
+      type: Boolean,
+      required: false,
+      default: () => false,
+    },
+    disabled: {
+      type: Boolean,
+      required: false,
+      default: () => false,
     },
     onAction: {
       type: Function,

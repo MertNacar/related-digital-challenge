@@ -2,9 +2,22 @@ import apiClient from "@/api/client";
 
 const state = {
   items: [],
+  pageConfigs: {
+    pages: [],
+    currentPage: 1,
+    totalPages: 0,
+    isNextActive: false,
+    isPrevActive: false,
+  },
 };
 
-const getters = {};
+const getters = {
+  currentItems(state) {
+    const { items } = state;
+    const { currentPage } = state.pageConfigs;
+    return items.slice((currentPage - 1) * 10, currentPage * 10);
+  },
+};
 
 const actions = {
   async get({ commit }) {
@@ -20,6 +33,19 @@ const actions = {
     await apiClient.todos.delete(id);
     commit("deleteItem", id);
   },
+  setPageConfigs({ commit }, items) {
+    const pageCounts = Math.ceil(items.length / 10);
+    let pages = [];
+
+    for (let i = 1; i < pageCounts + 1; i++) {
+      pages.push(i);
+    }
+
+    commit("setPageConfigs", { pages, pageCounts });
+  },
+  setCurrentPage({ commit }, page) {
+    commit("setCurrentPage", page);
+  },
 };
 
 const mutations = {
@@ -33,6 +59,22 @@ const mutations = {
   },
   deleteItem(state, id) {
     state.items = state.items.filter((item) => item.id !== id);
+  },
+  setPageConfigs(state, { pages, pageCounts }) {
+    state.pageConfigs = {
+      ...state.pageConfigs,
+      pages,
+      totalPages: pageCounts,
+      isNextActive: pageCounts > 1,
+    };
+  },
+  setCurrentPage(state, page) {
+    state.pageConfigs = {
+      ...state.pageConfigs,
+      isNextActive: state.pageConfigs.totalPages > page,
+      isPrevActive: page > 1,
+      currentPage: page,
+    };
   },
 };
 
