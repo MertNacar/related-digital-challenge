@@ -33,9 +33,10 @@ export default {
   methods: {
     handleEditTodo({ id }) {
       console.log(`id`, id);
+      // this.$store.dispatch("todos/edit", id);
     },
     handleDeleteTodo({ id }) {
-      console.log(`id`, id);
+      this.$store.dispatch("todos/delete", id);
     },
   },
 };
