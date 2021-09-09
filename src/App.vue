@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import TodoList from "@/components/Todo/TodoList";
+import TodoList from "@/components/todo/TodoList";
 
 export default {
   name: "App",
@@ -23,10 +23,26 @@ export default {
 .mb-5 {
   margin-bottom: 1.5rem;
 }
+.mb-4 {
+  margin-bottom: 1rem;
+}
 
 // widths
 .w-100 {
   width: 100%;
+}
+
+// button
+.btn {
+  border-radius: 30rem;
+}
+
+.btn-primary {
+  background-color: rgb(36, 77, 212);
+}
+
+.btn-danger {
+  background-color: rgb(224, 37, 24);
 }
 
 // flex
